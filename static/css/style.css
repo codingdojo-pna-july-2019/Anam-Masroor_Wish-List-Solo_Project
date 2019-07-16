@@ -1,0 +1,33 @@
+/* homepage */ 
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #75aaeb, #d18ff1);
+    color: rgb(10, 0, 0);
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ffffff;
+    margin-bottom: 2%;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #0062cc;
+    color: rgb(14, 13, 13);
+}
+
+.nav-bar{
+    display: inline-block
+}

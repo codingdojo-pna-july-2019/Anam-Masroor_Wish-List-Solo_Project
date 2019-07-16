@@ -1,0 +1,30 @@
+-User Register
+-Password Hashing
+-Ajax for email address
+-Login User
+
+User can Post a Wish
+User can like a Wish
+User can only delete their own posted Wish
+User can edit and update only their own posted Wish
+
+User can edit and update their own account
+
+user logout-session should clear
+
+
+Project Goals-
+Utilize Git/Github--Done
+
+Full CRUD--Done
+
+DB Relationships (beyond belongs to user) - optional--Done
+
+Responsive Web Design (RWD) - optional, but recommended--Done (bootstrap)
+
+AJAX or external API (Ajax Done)
+
+Deployment
+
+
+____________________

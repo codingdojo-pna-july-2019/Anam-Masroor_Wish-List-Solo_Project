@@ -1,0 +1,72 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <title>Wish App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="{{ url_for('static', filename='js/email.js') }}"></script>
+
+    </head>
+    
+    <body>
+        <div class="container register-form">
+            <div class="form">
+                <div class = "note">
+                    <h1>Wish Dashboard<h1></h1>
+                </div>
+        <h2>Welcome <i>{{user["first_name"]}}!</i></h2>
+        <a href= "/users/{{user.id}}/edit">Edit Account</a>
+    
+ 
+        <h3>Make a Wish:</h3>
+        {% with messages = get_flashed_messages() %}     
+                {% if messages %}                            
+                    {% for message in messages %}            
+                        <p>{{message}}</p>                   
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <form action="/wishes/create" method="POST">
+            What do you wish for? <input type="text" name="wish_content">
+            <br>
+            <div class="buttons">
+            <input type="submit" value="POST">
+            </div>
+            </form>
+        {% for wish in wishes %}
+            <div>
+                <p><a href="/users/{{wish['user_id']}}">{{wish["first_name"]}}</a> wishes for- "{{wish["wish_content"]}}"</p>
+                    <form action='/wishes/{{wish.id}}/add_like' method='POST'>
+                    
+                    <input type="submit" value="Like">
+                    
+                    </form>  
+            {% for like in likes %}
+                {% if like["wish_id"] == wish["id"] %}
+                    <p># of Likes:{{like["count"]}}</p>
+                {% endif %}
+            {% endfor %}
+        
+            <form action='/wishes/{{wish.id}}/edit' method='POST'>
+                <input type="submit" value="Edit your Wish">
+            </form>           
+            <form action='/wishes/{{wish.id}}/delete' method='POST'>
+                <input type="submit" value="Delete your Wish">
+            </form>
+                </div> 
+        {% endfor %}
+        <a href="/logout">Logout</a>   
+            </div>
+    </div>
+
+    </body>
+</html>
+    
